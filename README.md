@@ -1,2 +1,4 @@
-# shit-accumulates
-Life events happen. Sometimes their effect accumulates
+shit-accumulates
+================
+
+Life happens. Sometimes shit accumulates.
