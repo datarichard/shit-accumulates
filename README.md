@@ -290,3 +290,32 @@ df |>
     ## 12 ledsc cumevent3+   7.75       1.92      4.04  5.54e- 5
     ## 13 levio cumevent2    1.25       1.03      1.22  2.24e- 1
     ## 14 levio cumevent3+   1.89       1.19      1.59  1.11e- 1
+
+------------------------------------------------------------------------
+
+#### Controlling for other events
+
+``` r
+df7 <- df |> 
+  filter(event %in% 
+    c("lefnw", "ledsc", "lefrd", "leins", "leinf", "levio", "lepcm")) |> 
+  mutate(event = factor(event))
+
+lm(
+  formula = mhi5.d ~ cumevent * event + nevent,
+  data = df7) |> 
+  summary()
+
+# this works but need to get the marginal effects of cumulative events
+```
+
+``` r
+library(lme4)
+
+lmer(
+  formula = mhi5.d ~ cumevent * event + (1|xwaveid),
+  data = df7) |> 
+  summary()
+
+# this also works but need to get the marginal effects of cumulative events
+```
